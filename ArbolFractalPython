@@ -1,0 +1,33 @@
+import turtle
+import random
+
+turtle.setup(1200, 600)      # establecer el tamaño de la ventana de 800 por 				      600 píxeles
+wn = turtle.Screen()        # establecer wn al objeto de la ventana
+wn.bgcolor("lightgreen")    # establecer el color de fondo de la ventana
+wn.title("Fractalprueba")     # establecer el título de la ventana
+
+lapiz = turtle.Turtle()
+lapiz.penup()
+lapiz.goto(0,-300)
+lapiz.pendown()
+lapiz.left(90)
+lapiz.speed(0)
+
+
+def arbol(tamañorama,lapiz):
+    lapiz.pensize(tamañorama/20)
+    if tamañorama<8:
+        lapiz.dot(5,"white")
+        return
+    lapiz.forward(tamañorama)
+    lapiz.left(30)
+    arbol((tamañorama/2)*random.uniform(1,2),lapiz)
+    lapiz.right(60)
+    arbol((tamañorama/2)*random.uniform(1,2),lapiz)
+    lapiz.left(30)
+    lapiz.backward(tamañorama)
+
+arbol(100,lapiz)
+
+
+wn.exitonclick()
